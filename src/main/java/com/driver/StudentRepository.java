@@ -28,6 +28,8 @@ public class StudentRepository {
 
     public void addStudentTeacherPair(String student, String teacher){
         stDb.get(teacher).add(student);
+        Teacher teacher1 = teacDb.get(teacher);
+        teacher1.setNumberOfStudents(teacher1.getNumberOfStudents()+1);
     }
 
     public Student getStudentByName(String name){
