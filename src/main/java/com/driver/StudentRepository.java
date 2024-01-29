@@ -53,12 +53,17 @@ public class StudentRepository {
     }
 
     public void deleteTeacherByName(String teacher){
+        List<String> stud = stDb.get(teacher);
+        for(String sName : stud){
+            studDb.remove(sName);
+        }
         teacDb.remove(teacher);
         stDb.remove(teacher);
     }
 
     public void deleteAllTeachers(){
-        teacDb.clear();
-        stDb.clear();
+        for(String tName : stDb.keySet()){
+            deleteTeacherByName(tName);
+        }
     }
 }
